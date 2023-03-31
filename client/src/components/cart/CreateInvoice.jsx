@@ -17,20 +17,20 @@ const CreateInvoice = (props) => {
       <Form layout={"vertical"} onFinish={onFinish}>
         <Form.Item
           label="Customer Name/Surname"
-          name={"curtomerName"}
+          name={"customerName"}
           rules={[
             {
-              requried: true,
-              message: "Please enter a valid name and surname!",
+              required: true,
+              message: "Please enter a valid name and surname",
             },
           ]}
         >
-          <Input placeholder="Enter a valid name and surname" />
+          <Input placeholder="Please enter name and surname" />
         </Form.Item>
         <Form.Item
-          label="Phone Number"
+          rules={[{ required: true }]}
           name={"phoneNumber"}
-          rules={[{ requried: true }]}
+          label="Phone Number"
         >
           <Input
             placeholder="Please enter a valid phone number"
@@ -38,16 +38,15 @@ const CreateInvoice = (props) => {
           />
         </Form.Item>
         <Form.Item
-          label="Payment Type"
-          rules={[{ requried: true }]}
-          name={"paymentMode"}
+          label="Payment Method"
+          rules={[{ required: true }]}
+          name={"paymentMethod"}
         >
-          <Select placeholder="Please choose a payment method">
+          <Select placeholder="Choose a payment method">
             <Select.Option value="Cash">Cash</Select.Option>
             <Select.Option value="Credit Card">Credit Card</Select.Option>
           </Select>
         </Form.Item>
-
         <Card>
           <div className="flex justify-between">
             <span>Subtotal</span>
@@ -55,11 +54,11 @@ const CreateInvoice = (props) => {
           </div>
           <div className="flex justify-between my-2">
             <span>Tax 8%</span>
-            <span className="text-red-600">43.92</span>
+            <span className="text-red-600">+43.92</span>
           </div>
-          <div className="flex justify-between font-bold">
-            <span>Total</span>
-            <span>632.92</span>
+          <div className="flex justify-between">
+            <b>Total</b>
+            <b>592.92</b>
           </div>
           <div className="flex justify-end">
             <Button
