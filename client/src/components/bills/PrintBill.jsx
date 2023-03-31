@@ -18,7 +18,7 @@ const PrintBill = (props) => {
               <h2 className="text-4xl font-bold text-slate-700">LOGO</h2>
             </div>
             <div className="bill-details">
-              <div className="grid grid-cols-4 gap-12">
+              <div className="grid sm:grid-cols-4 grid-cols-3 gap-12">
                 <div className="text:md text-slate-500">
                   <p className="font-bold text-slate-700">Invoice Details:</p>
                   <p>Unwrapped</p>
@@ -45,7 +45,7 @@ const PrintBill = (props) => {
                     <p>2023-11-21</p>
                   </div>
                 </div>
-                <div className="text:md text-slate-500">
+                <div className="text:md text-slate-500 sm:block hidden">
                   <div>
                     <p className="font-bold text-slate-700">Terms:</p>
                     <p>10 Days</p>
@@ -63,31 +63,38 @@ const PrintBill = (props) => {
                   <tr className="border-b border-slate-200">
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 text-left text-sm font-normal text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+                      className="py-3.5 text-left text-sm font-normal text-slate-700 md:pl-0 sm:table-cell hidden"
                     >
                       Image
                     </th>
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 text-left text-sm font-normal text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+                      className="py-3.5 text-left text-sm font-normal text-slate-700 md:pl-0 sm:table-cell hidden"
+                    >
+                      Title
+                    </th>
+                    <th
+                      colSpan={4}
+                      scope="col"
+                      className="py-3.5 text-left text-sm font-normal text-slate-700 md:pl-0 sm:hidden"
                     >
                       Title
                     </th>
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 text-sm font-normal text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden text-center"
+                      className="py-3.5 text-sm font-normal text-slate-700 md:pl-0 sm:table-cell hidden text-center"
                     >
                       Price
                     </th>
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 text-sm font-normal text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden text-center"
+                      className="py-3.5 text-sm font-normal text-slate-700 md:pl-0 sm:table-cell hidden text-center"
                     >
                       Quantity
                     </th>
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 text-end text-sm font-normal text-slate-700 sm:pl-6 md:pl-0 sm:table-cell hidden"
+                      className="py-3.5 text-end text-sm font-normal text-slate-700 md:pl-0"
                     >
                       Total
                     </th>
@@ -95,20 +102,33 @@ const PrintBill = (props) => {
                 </thead>
                 <tbody>
                   <tr className="border-b border-slate-200">
-                    <td className="py-4 pr-3">
+                    <td className="py-4 sm:table-cell hidden ">
                       <img
                         src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
                         alt=""
                         className="w-12 h-12 object-cover"
                       />
                     </td>
-                    <td className="py-4">
-                      <span className="font-medium">Spagetti</span>
+                    <td className="py-4 sm:table-cell hidden">
+                      <div className="flex flex-col">
+                        <span className="font-medium">Spagetti</span>
+                        <span className="sm:hidden inline-block text-xs">
+                          A unit price at 70
+                        </span>
+                      </div>
                     </td>
-                    <td className="py-4 text-center">
+                    <td className="py-4 sm:hidden" colSpan={4}>
+                      <div className="flex flex-col">
+                        <span className="font-medium">Spagetti</span>
+                        <span className="sm:hidden inline-block text-xs">
+                          A unit price at 70
+                        </span>
+                      </div>
+                    </td>
+                    <td className="py-4 text-center sm:table-cell hidden">
                       <span>70</span>
                     </td>
-                    <td className="py-4 text-center">
+                    <td className="py-4 sm:text-center text-right sm:table-cell hidden">
                       <span>1</span>
                     </td>
                     <td className="py-4 text-end">
@@ -118,7 +138,20 @@ const PrintBill = (props) => {
                 </tbody>
                 <tfoot>
                   <tr>
-                    <th className="text-right pt-4" colSpan={4} span="row">
+                    <th
+                      className="text-right pt-4 sm:table-cell hidden"
+                      colSpan={4}
+                      span="row"
+                    >
+                      <span className="font-normal text-slate-700" colSpan={4}>
+                        Subtotal
+                      </span>
+                    </th>
+                    <th
+                      className="text-left pt-4 sm:hidden"
+                      colSpan={4}
+                      span="row"
+                    >
                       <span className="font-normal text-slate-700">
                         Subtotal
                       </span>
@@ -128,7 +161,20 @@ const PrintBill = (props) => {
                     </th>
                   </tr>
                   <tr>
-                    <th className="text-right pt-4" colSpan={4} span="row">
+                    <th
+                      className="text-right pt-4 sm:table-cell hidden"
+                      colSpan={4}
+                      span="row"
+                    >
+                      <span className="font-normal text-slate-700" colSpan={4}>
+                        Tax
+                      </span>
+                    </th>
+                    <th
+                      className="text-left pt-4 sm:hidden"
+                      colSpan={4}
+                      span="row"
+                    >
                       <span className="font-normal text-slate-700">Tax</span>
                     </th>
                     <th className="text-right pt-4" span="row">
@@ -136,8 +182,21 @@ const PrintBill = (props) => {
                     </th>
                   </tr>
                   <tr>
-                    <th className="text-right pt-4" colSpan={4} span="row">
-                      <span className="font-bold text-slate-700">Total</span>
+                    <th
+                      className="text-right pt-4 sm:table-cell hidden"
+                      colSpan={4}
+                      span="row"
+                    >
+                      <span className="font-bold text-slate-700" colSpan={4}>
+                        Subtotal
+                      </span>
+                    </th>
+                    <th
+                      className="text-left pt-4 sm:hidden"
+                      colSpan={4}
+                      span="row"
+                    >
+                      <span className="font-bold text-slate-700">Subtotal</span>
                     </th>
                     <th className="text-right pt-4" span="row">
                       <span className="font-bold text-slate-700">75.6</span>
