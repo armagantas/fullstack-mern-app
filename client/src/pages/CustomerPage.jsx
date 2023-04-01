@@ -1,6 +1,5 @@
 import Header from "../components/header/Header";
 import { Table } from "antd";
-import { useState } from "react";
 
 const CustomerPage = () => {
   const dataSource = [
