@@ -1,23 +1,14 @@
-import { Form, Input, Button, Carousel } from "antd";
+import { Form, Input, Button, Carousel, Checkbox } from "antd";
 import { Link } from "react-router-dom";
 import AuthCarousel from "../../components/auth/AuthCarousel";
 
-const Register = () => {
+const Login = () => {
   return (
     <div className="h-screen">
       <div className="flex justify-between h-full">
         <div className="xl:px-20 px-10 w-full flex flex-col h-full justify-center relative">
           <h1 className="text-center text-5xl font-bold mb-2">LOGO</h1>
           <Form layout="vertical">
-            <Form.Item
-              label="Username"
-              name={"username"}
-              rules={[
-                { required: true, message: "Username cannot be left blank" },
-              ]}
-            >
-              <Input />
-            </Form.Item>
             <Form.Item
               label="E-Mail"
               name={"email"}
@@ -36,14 +27,11 @@ const Register = () => {
             >
               <Input.Password />
             </Form.Item>
-            <Form.Item
-              label="Password"
-              name={"passwordAgain"}
-              rules={[
-                { required: true, message: "Password cannot be left blank" },
-              ]}
-            >
-              <Input.Password />
+            <Form.Item name={"remember"} valuePropName="checked">
+              <div className="flex justify-between items-center">
+                <Checkbox>Remember me</Checkbox>
+                <Link>Forgot Password?</Link>
+              </div>
             </Form.Item>
             <Form.Item>
               <Button
@@ -52,14 +40,14 @@ const Register = () => {
                 className="w-full"
                 size="large"
               >
-                Register
+                Login
               </Button>
             </Form.Item>
           </Form>
           <div className="flex justify-center absolute left-0 bottom-10 w-full">
-            Have an account?&nbsp;
-            <Link to="/login" className="text-blue-600">
-              Sign in now!
+            Don't have an account?&nbsp;
+            <Link to="/register" className="text-blue-600">
+              Register now!
             </Link>
           </div>
         </div>
@@ -96,4 +84,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
