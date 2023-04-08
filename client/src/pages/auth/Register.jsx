@@ -39,8 +39,20 @@ const Register = () => {
             <Form.Item
               label="Password"
               name={"passwordAgain"}
+              dependencies={["password"]}
               rules={[
                 { required: true, message: "Password cannot be left blank" },
+                ({ getFieldValue }) => ({
+                  validator(rule, value) {
+                    if (!value || getFieldValue("password") === value) {
+                      return Promise.resolve();
+                    }
+
+                    return Promise.reject(
+                      "The two passwords that you entered do not match!"
+                    );
+                  },
+                }),
               ]}
             >
               <Input.Password />
