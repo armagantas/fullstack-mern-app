@@ -68,7 +68,7 @@ const updateCategory = async (req, res) => {
 
 const deleteCategory = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     await categorySchema.findByIdAndRemove(id);
     res.status(201).json({
       message: "Product has been removed.",
@@ -76,4 +76,12 @@ const deleteCategory = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
+};
+
+module.exports = {
+  getCategories,
+  getDetail,
+  updateCategory,
+  deleteCategory,
+  createCategory,
 };

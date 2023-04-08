@@ -8,11 +8,10 @@ const {
   getCategories,
 } = require("../controllers/categoryController.js");
 
-router.route("/").get(getCategories).post(createCategory);
-router
-  .route("/:id")
-  .get(getDetail)
-  .patch(updateCategory)
-  .delete(deleteCategory);
+router.get("/getCategories", getCategories);
+router.get("/getDetail/:id", getDetail);
+router.post("/createCategory", createCategory);
+router.patch("/updateCategory/:id", updateCategory);
+router.delete("/deleteCategory/:id", deleteCategory);
 
 module.exports = router;

@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const app = express();
 const port = 5000;
-const category = require("./routes/categories");
 const cors = require("cors");
+const categoriesRoute = require("./routes/categories");
 
 dotenv.config();
 
@@ -12,8 +12,8 @@ dotenv.config();
 app.use(express.json());
 app.use(cors());
 
-app.use("/api", category);
-
+//routes
+app.use("/api/categories", categoriesRoute);
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
