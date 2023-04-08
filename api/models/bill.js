@@ -1,34 +1,34 @@
-const mongoose = require("mongoose");
+const mongoose = required("mongoose");
 
-const BillSchema = mongoose.Schema(
+const BillSchema = new mongoose.Schema(
   {
     customerName: {
       type: String,
-      require: true,
+      required: true,
     },
     customerPhoneNumber: {
       type: String,
-      require: true,
+      required: true,
     },
     paymentMode: {
       type: String,
-      require: true,
+      required: true,
     },
     cartItems: {
       type: Array,
-      require: true,
+      required: true,
     },
     Subtotal: {
       type: Number,
-      require: true,
+      required: true,
     },
     tax: {
       type: Number,
-      require: true,
+      required: true,
     },
     totalAmount: {
       type: Number,
-      require: true,
+      required: true,
     },
   },
   { timestamps: true }

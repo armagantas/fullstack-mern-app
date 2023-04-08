@@ -1,22 +1,22 @@
 const mongoose = require("mongoose");
 
-const UserSchema = mongoose.model(
+const UserSchema = new mongoose.model(
   {
     username: {
       type: String,
-      require: true,
+      required: true,
     },
     email: {
       type: String,
-      require: true,
+      required: true,
     },
     password: {
       type: String,
-      require: true,
+      required: true,
     },
     verify: {
       type: Boolean,
-      require: true,
+      required: true,
     },
   },
   { timestamps: true }
