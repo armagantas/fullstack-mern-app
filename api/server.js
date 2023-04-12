@@ -5,6 +5,7 @@ const app = express();
 const port = 5000;
 const cors = require("cors");
 const categoriesRoute = require("./routes/categories");
+const productsRoute = require("./routes/products");
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(cors());
 
 //routes
 app.use("/api/categories", categoriesRoute);
+app.use("/api/products", productsRoute);
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
