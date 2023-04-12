@@ -30,54 +30,7 @@ const getBills = async (req, res) => {
   }
 };
 
-const getDetail = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const detailBill = await BillSchema.findById(id);
-    res.status(200).json({
-      detailBill,
-      message: "Transaction completed successfully",
-      success: true,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      message: error.message,
-    });
-  }
-};
-
-const updateBill = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const updateBill = await BillSchema.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
-    res.status(200).json({
-      updateBill,
-      message: "Bill has been updated",
-      success: true,
-    });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-const deleteBill = async (req, res) => {
-  try {
-    const { id } = req.params;
-    await BillSchema.findByIdAndRemove(id);
-    res.status(201).json({
-      message: "Bill has been removed.",
-    });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
 module.exports = {
   getBills,
-  getDetail,
-  updateBill,
-  deleteBill,
   createBill,
 };
