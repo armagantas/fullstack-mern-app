@@ -14,8 +14,8 @@ const getUsers = async (req, res) => {
 };
 
 const getUserById = async (req, res) => {
+  const userId = req.body.userId;
   try {
-    const { userId } = req.params;
     const userDetail = await UserSchema.findById(userId);
     res.status(200).json({
       userDetail,

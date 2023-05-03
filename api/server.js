@@ -7,7 +7,8 @@ const cors = require("cors");
 const categoriesRoute = require("./routes/categories");
 const productsRoute = require("./routes/products");
 const billsRouter = require("./routes/bills");
-const userRouter = require("./routes/auth");
+const authRouter = require("./routes/auth");
+const userRouter = require("./routes/users");
 
 dotenv.config();
 
@@ -19,7 +20,8 @@ app.use(cors());
 app.use("/api/categories", categoriesRoute);
 app.use("/api/products", productsRoute);
 app.use("/api/bills", billsRouter);
-app.use("/api/users", userRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
 const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
