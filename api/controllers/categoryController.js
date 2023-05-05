@@ -2,11 +2,10 @@ const categorySchema = require("../models/category.js");
 
 const createCategory = async (req, res) => {
   try {
-    const newCategory = await categorySchema.create(req.body);
+    const newCategory = new categorySchema(req.body);
+    await newCategory.save();
     res.status(201).json({
-      newCategory,
       message: "Category has been created.",
-      success: true,
     });
   } catch (error) {
     return res.status(500).json({
