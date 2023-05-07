@@ -4,7 +4,7 @@ import axios from "axios";
 import { Button, Form, Input, Modal } from "antd";
 import { useForm } from "antd/es/form/Form";
 
-const CreateCategoryModal = ({ ...other }) => {
+const CreateCategoryModal = ({ ...other }, setCategories, categories) => {
   const [form] = useForm();
   const onFinish = async (values) => {
     try {
@@ -16,6 +16,7 @@ const CreateCategoryModal = ({ ...other }) => {
       );
       form.resetFields();
       other.onCancel();
+      setCategories([...categories, values]);
     } catch (err) {
       console.log(err);
       other.onCancel();
