@@ -13,7 +13,7 @@ const HomePage = () => {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API_URL}/categories/getCategories`
       );
-      setCategories(data.data);
+      setCategories(data.getCategory);
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +23,6 @@ const HomePage = () => {
     getCategories();
   }, []);
 
-  console.log(categories);
   return (
     <>
       <Header />
