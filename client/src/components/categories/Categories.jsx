@@ -4,7 +4,7 @@ import { PlusOutlined, EditOutlined } from "@ant-design/icons";
 import CreateCategoryModal from "../modals/CreateCategoryModal";
 import EditCategory from "../modals/EditCategory";
 
-const Categories = ({ categories }) => {
+const Categories = ({ categories, setCategories }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
@@ -35,6 +35,8 @@ const Categories = ({ categories }) => {
       <EditCategory
         isEditModalOpen={isEditModalOpen}
         setIsEditModalOpen={setIsEditModalOpen}
+        categories={categories}
+        setCategories={setCategories}
       />
     </ul>
   );
