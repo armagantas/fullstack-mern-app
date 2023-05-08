@@ -8,6 +8,8 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
   console.log(editingRow._id);
 
   const onFinish = (values) => {
+    /*refactoring*/
+
     try {
       axios.put(`${process.env.REACT_APP_API_URL}/categories/updateCategory`, {
         ...values,
