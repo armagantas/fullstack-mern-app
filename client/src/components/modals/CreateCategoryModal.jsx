@@ -16,7 +16,13 @@ const CreateCategoryModal = ({ ...other }, setCategories, categories) => {
       );
       form.resetFields();
       other.onCancel();
-      setCategories([...categories, values]);
+      setCategories([
+        ...categories,
+        {
+          _id: Math.random(),
+          title: values.title,
+        },
+      ]);
     } catch (err) {
       console.log(err);
       other.onCancel();
