@@ -11,9 +11,12 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
     /*refactoring*/
 
     try {
-      axios.put(`${process.env.REACT_APP_API_URL}/categories/updateCategory`, {
-        ...values,
-      });
+      axios.put(
+        `${process.env.REACT_APP_API_URL}/categories/updateCategory/${editingRow._id}`,
+        {
+          title: { ...values },
+        }
+      );
     } catch (error) {
       console.log(error);
     }
