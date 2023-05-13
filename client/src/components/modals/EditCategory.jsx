@@ -11,7 +11,7 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
     /*refactoring*/
 
     try {
-      axios.put(
+      axios.patch(
         `${process.env.REACT_APP_API_URL}/categories/updateCategory/${editingRow._id}`,
         {
           title: { ...values },
