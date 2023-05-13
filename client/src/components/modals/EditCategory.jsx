@@ -12,11 +12,10 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
     /*refactoring*/
 
     try {
-      await axios.patch(
+      await axios.put(
         `${process.env.REACT_APP_API_URL}/categories/updateCategory/${editingRow._id}`,
-        {
-          data: { title: inputData },
-        }
+
+        { title: inputData }
       );
       setInputData("");
     } catch (error) {

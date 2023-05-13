@@ -51,7 +51,7 @@ const updateCategory = async (req, res) => {
     console.log(req.body);
     const updateCategory = await categorySchema.findByIdAndUpdate(
       id,
-      req.body.data,
+      req.body,
       {
         new: true,
       }
