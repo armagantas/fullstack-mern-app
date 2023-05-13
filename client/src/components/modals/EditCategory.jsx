@@ -4,19 +4,21 @@ import axios from "axios";
 
 const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
   const [editingRow, setEditingRow] = useState({});
+  const [inputData, setInputData] = useState("");
 
   console.log(editingRow._id);
 
-  const onFinish = (values) => {
+  const onFinish = async () => {
     /*refactoring*/
 
     try {
-      axios.patch(
+      await axios.patch(
         `${process.env.REACT_APP_API_URL}/categories/updateCategory/${editingRow._id}`,
         {
-          title: { ...values },
+          data: { title: inputData },
         }
       );
+      setInputData("");
     } catch (error) {
       console.log(error);
     }
@@ -29,7 +31,10 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
         if (record._id === editingRow._id) {
           return (
             <Form.Item className="mb-0">
-              <Input defaultValue={record.title} />
+              <Input
+                defaultValue={record.title}
+                onChange={(e) => setInputData(e.target.value)}
+              />
             </Form.Item>
           );
         } else {

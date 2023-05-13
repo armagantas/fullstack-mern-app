@@ -48,9 +48,10 @@ const getDetail = async (req, res) => {
 const updateCategory = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(req.body);
     const updateCategory = await categorySchema.findByIdAndUpdate(
       id,
-      req.body,
+      req.body.data,
       {
         new: true,
       }
