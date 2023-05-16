@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Form, Modal, Table, Input, Button } from "antd";
 import axios from "axios";
 
-const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
+const EditCategory = ({
+  isEditModalOpen,
+  setIsEditModalOpen,
+  categories,
+  setCategories,
+}) => {
   const [editingRow, setEditingRow] = useState({});
   const [inputData, setInputData] = useState("");
 
@@ -18,6 +23,14 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
         { title: inputData }
       );
       setInputData("");
+      setCategories(
+        categories.map((item) => {
+          if (item._id === editingRow._id) {
+            return { ...item, title: inputData };
+          }
+          return item;
+        })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -47,13 +60,17 @@ const EditCategory = ({ isEditModalOpen, setIsEditModalOpen, categories }) => {
       render: (text, record) => {
         return (
           <>
-            <Button type="link" onClick={() => setEditingRow(record)}>
+            <Button
+              type="link"
+              onClick={() => setEditingRow(record)}
+              className="pl-0"
+            >
               Edit
             </Button>
-            <Button type="text" htmlType="submit">
+            <Button type="link" htmlType="submit" className="text-gray-500">
               Save
             </Button>
-            <Button type="text" danger>
+            <Button type="link" danger>
               Delete
             </Button>
           </>
