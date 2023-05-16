@@ -35,6 +35,18 @@ const EditCategory = ({
       console.log(error);
     }
   };
+
+  const deleteCategory = () => {
+    try {
+      axios.delete(
+        `${process.env.REACT_APP_API_URL}/categories/deleteCategory/${editingRow._id}`
+      );
+      setInputData("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const columns = [
     {
       title: "Category Title",
@@ -70,7 +82,7 @@ const EditCategory = ({
             <Button type="link" htmlType="submit" className="text-gray-500">
               Save
             </Button>
-            <Button type="link" danger>
+            <Button type="link" danger onClick={() => deleteCategory(record)}>
               Delete
             </Button>
           </>
