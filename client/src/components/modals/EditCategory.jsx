@@ -36,8 +36,12 @@ const EditCategory = ({
     }
   };
 
-  const deleteCategory = async () => {
+  const deleteCategory = async (id) => {
     try {
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/categories/deleteCategory/${id}`
+      );
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -48,17 +52,17 @@ const EditCategory = ({
       title: "Category Title",
       dataIndex: "title",
       render: (_, record) => {
-        if (record._id === editingRow._id) {
+        if (record?._id === editingRow?._id) {
           return (
             <Form.Item className="mb-0">
               <Input
-                defaultValue={record.title}
+                defaultValue={record?.title}
                 onChange={(e) => setInputData(e.target.value)}
               />
             </Form.Item>
           );
         } else {
-          return <p>{record.title}</p>;
+          return <p>{record?.title}</p>;
         }
       },
     },
@@ -78,7 +82,11 @@ const EditCategory = ({
             <Button type="link" htmlType="submit" className="text-gray-500">
               Save
             </Button>
-            <Button type="link" danger onClick={() => deleteCategory(record)}>
+            <Button
+              type="link"
+              danger
+              onClick={() => deleteCategory(record?._id)}
+            >
               Delete
             </Button>
           </>

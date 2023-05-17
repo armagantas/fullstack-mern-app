@@ -14,6 +14,7 @@ const CreateCategoryModal = ({ ...other }, setCategories, categories) => {
           ...values,
         }
       );
+      window.location.reload();
       form.resetFields();
       other.onCancel();
       setCategories([

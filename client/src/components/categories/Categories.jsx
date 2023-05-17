@@ -12,8 +12,8 @@ const Categories = ({ categories, setCategories }) => {
     <ul className="flex gap-4 md:flex-col text-lg ">
       {console.log(categories.getCategory)}
       {categories.map((item) => (
-        <li className="category-item" key={item._id}>
-          <span>{item.title}</span>
+        <li className="category-item" key={item?._id}>
+          <span>{item?.title}</span>
         </li>
       ))}
       <li
