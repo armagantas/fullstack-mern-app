@@ -36,12 +36,8 @@ const EditCategory = ({
     }
   };
 
-  const deleteCategory = () => {
+  const deleteCategory = async () => {
     try {
-      axios.delete(
-        `${process.env.REACT_APP_API_URL}/categories/deleteCategory/${editingRow._id}`
-      );
-      setInputData("");
     } catch (err) {
       console.log(err);
     }
